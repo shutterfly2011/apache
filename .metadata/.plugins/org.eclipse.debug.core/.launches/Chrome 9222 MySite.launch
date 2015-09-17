@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.chromium.debug.ui.LaunchType$Wip">
+<booleanAttribute key="add_network_console" value="false"/>
+<stringAttribute key="debug_host" value="localhost"/>
+<intAttribute key="debug_port" value="9222"/>
+<stringAttribute key="predefined_source_wrapperd_ids" value=""/>
+<stringAttribute key="source_lookup_mode" value="AUTO_DETECT"/>
+<stringAttribute key="wip_backend_id" value="Protocol 1.0"/>
+</launchConfiguration>

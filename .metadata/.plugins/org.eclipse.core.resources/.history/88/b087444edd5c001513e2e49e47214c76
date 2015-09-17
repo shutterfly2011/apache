@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>javascript-only file reading </title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+function parseCSV() {
+  var info = el('userValue').value;
+  var temp = [];
+	  temp = info.split(',');
+  alert(info.join('\t'));
+}
+</script>
+</head>
+<body>
+
+<textarea rows='20' cols='80' id='userValue'>Hello World</textarea><br />
+
+<input type='button'  value='Load Cartoon.csv' onclick="doLoad('')"  />	
+<br> Enter filename to display
+<input id='fname' type="text" value="" size="60">
+
+<input type='button'  value='Load file' onclick="doLoad(el('fname').value)"  />	
+<br> <buton onclick="parseCSV()">Parse CSV</buton>
+<br>
+Open <button onclick="window.location=el('fname').value" target="_blank">
+ entered filename</button> in a new tab/window.
+
+<script type='text/javascript'>
+
+function el(tid) {return document.getElementById(tid);}
+
+function IO(U, V) {//LA MOD String Version. A tiny ajax library.  by, DanDavis
+    var X = !window.XMLHttpRequest ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest();
+    X.open(V ? 'PUT' : 'GET', U, false );
+    X.setRequestHeader('Content-Type', 'text/html')
+    X.send(V ? V : '');
+    return X.responseText;
+}	
+
+function doLoad(info){
+  if (info == '') { el("userValue").value = IO("TagHistory.csv"); }
+             else { el('userValue').value = IO(info); }
+}
+</script>
+</body>
+</html>

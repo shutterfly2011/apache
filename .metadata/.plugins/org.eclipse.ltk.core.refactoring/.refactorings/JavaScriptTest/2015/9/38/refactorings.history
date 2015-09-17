@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;JavaScriptTest/htmlConainer.html&apos; to &apos;htmlContainer.html&apos;" description="Rename resource &apos;htmlConainer.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="htmlConainer.html" name="htmlContainer.html" stamp="1442110885662" updateReferences="true"/>
+</session>

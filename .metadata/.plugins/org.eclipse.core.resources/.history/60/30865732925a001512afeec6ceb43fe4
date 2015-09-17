@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HTML testing container</title>
+	<script type="text/javascript" src="js/TextTools.js">
+		alert("hello!");
+		//document.getElementById("valuefield").innerHTML = "This is a test";
+	</script>
+</head>
+<body>
+	
+	<input type="button" value = "test" onclick="dosomething()"/>
+	<a id="valuefield">Here it is</a>
+	<script type="text/javascript">
+		function dosomething(){
+			readTextFile("C:\\Apache24\\htdocs\\JavaScriptTest\\TagHistory.csv");
+			//readTextFile("http://localhost/JavaScriptTest/TagHistory.csv");
+		}
+	</script>
+</body>
+</html>
