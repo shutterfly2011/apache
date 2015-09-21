@@ -1,3 +1,25 @@
+var dataSet;
+function readCSVToDataSet(files){
+	if (window.FileReader){
+		var reader = new FileReader();
+		/*
+		reader.onload = function(e){
+			var text = reader.result;
+		};*/
+		reader.onerror = function(e){
+			if(e.target.error.name == "NotReadableError") {
+				alert("Canno't read file !");
+			}else{
+				alert("Unknown error!");
+			}
+		};
+		reader.readAsText(files[0]);
+		
+	} else {
+		alert("FileReader is not support by the browser");
+	}	
+}
+
 function handleFiles(files) {
 	// Check for the various File API support.
 	if (window.FileReader) {
@@ -15,6 +37,8 @@ function getAsText(fileToRead) {
 	reader.onerror = errorHandler;
 	// Read file into memory as UTF-8      
 	reader.readAsText(fileToRead);
+	//return dataSet;
+	alert(reader.result);
 }
 
 function loadHandler(event) {
@@ -28,9 +52,10 @@ function processData(csv) {
     while (allTextLines.length) {
         lines.push(allTextLines.shift().split(','));
     }
-	console.log(lines);
+	//console.log(lines);
 	drawOutput(lines);
-	dataToArray(lines);
+	//return dataToArray(lines);
+	dataSet = dataToArray(lines);
 }
 
 function errorHandler(evt) {
@@ -48,8 +73,8 @@ function dataToArray(lines){
 		}
 		result.push(row);
 	}
-	console.log(result);
-	//return result;
+	//console.log(result);
+	return result;
 }
 
 function drawOutput(lines){

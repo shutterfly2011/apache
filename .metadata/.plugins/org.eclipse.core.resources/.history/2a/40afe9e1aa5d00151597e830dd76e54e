@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HTML testing container</title>
+<script type="text/javascript" src="js/jsTest1.js">
+	alert ("hello, this is first stop");
+	
+</script>
+
+</head>
+<body>
+	
+	<input type="button" value = "test" onclick="dosomething1()"/>
+	<a id="valuefield">Here it is</a>
+	<p><a id="fileContent">File content goes here</a></p>
+	<script type="text/javascript">
+		//alert("Hello!");
+		//document.getElementById("valuefield").innerHTML = "This is innerHTML";
+		function dosomething1(){
+			var reader = new FileReader();
+			var result;
+			reader.onload = function(e){
+				result = reader.result;
+				document.getElementById("fileContent").innerHTML = result;
+			};
+			var files = ["TagHistory.csv"];
+			reader.readAsText(files[0]);
+			
+		}
+		
+	</script>
+</body>
+</html>

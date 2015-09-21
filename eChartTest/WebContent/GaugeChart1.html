@@ -8,12 +8,14 @@
     <div id="main" style="height:400px"></div>
     <div id="gaugeChart" style="height:400px"></div>
     <!-- ECharts import -->
-    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <!-- <script src="http://echarts.baidu.com/build/dist/echarts.js"></script> -->
+    <script src="js/echarts.js"></script>
     <script type="text/javascript">
         // configure for module loader
         require.config({
             paths: {
-                echarts: 'http://echarts.baidu.com/build/dist'
+                //echarts: 'http://echarts.baidu.com/build/dist'
+            	echarts: 'js'
             }
         });
         
@@ -30,7 +32,11 @@
                 
                 var option = {
                     tooltip: {
-                        show: true
+                        show: true,
+                        formatter: function(params){
+                        	console.log(params);
+                        	return params[0];
+                        }
                     },
                     legend: {
                         data:['Sales']
@@ -74,6 +80,9 @@
 							restore:{show:true},
 							saveAsImage:{show:true}
 							}
+						},
+						toolTip:{
+							show:true
 						},
 						series:[
 							{

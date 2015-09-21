@@ -1,7 +1,0 @@
-/**
- * 
- */
-
-function dosomething(){
-	alert ("hello!);
-}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HTML testing container</title>
+<script type="text/javascript">
+	//alert ("hello, this is first stop");
+	var dataSet=[];
+</script>
+
+</head>
+<body>
+	
+	<input type="file" onchange="dosomething(this.files)"/>
+	<a id="valuefield">Here it is</a>
+	<p><a id="fileContent">File content goes here</a></p>
+	<script type="text/javascript">
+		//alert("Hello!");
+		//document.getElementById("valuefield").innerHTML = "This is innerHTML";
+		function dosomething(files){
+			var reader = new FileReader();
+			var lines;
+			reader.onload = function(e){
+				var content = reader.result;
+				var allTextLines = content.split(/\r\n|\n/);
+			    //var lines = [];
+			    while (allTextLines.length) {
+			        dataSet.push(allTextLines.shift().split(','));
+			    }
+				document.getElementById("fileContent").innerHTML = dataSet[0];
+				
+			};
+			reader.readAsText(files[0]);
+			
+		}
+		
+	</script>
+</body>
+</html>

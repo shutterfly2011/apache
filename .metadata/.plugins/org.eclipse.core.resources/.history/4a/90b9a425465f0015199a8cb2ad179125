@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HTML testing container</title>
+	<script type="text/javascript" src="js/papaparse.min.js">
+		alert("hello!");
+		//document.getElementById("valuefield").innerHTML = "This is a test";
+		
+	</script>
+</head>
+<body>
+	
+	<input type="button" value = "test" onclick="dosomething()"/>
+	<a id="valuefield">Here it is</a>
+	<p>
+		<a>Today's date is </a><a id = "todayDate">123</a>
+	</p>
+	<script type="text/javascript">
+		function dosomething(){
+			//readTextFile("C:\\Apache24\\htdocs\\JavaScriptTest\\TagHistory.csv");
+			//readTextFile("http://localhost/JavaScriptTest/TagHistory.csv");
+			var data = Papa.parse("C:\\Apache24\\htdocs\\JavaScriptTest\\TagHistory.csv");
+			console.log("finished:", data);
+		}
+	</script>
+	<script type="text/javascript">
+	document.getElementById("todayDate").innerHTML = 'BAC';
+	</script>
+</body>
+</html>

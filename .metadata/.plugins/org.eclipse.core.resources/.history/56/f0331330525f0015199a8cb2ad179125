@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HTML testing container</title>
+	<script type="text/javascript" src="js/papaparse.min.js">
+		alert("hello!");
+		//document.getElementById("valuefield").innerHTML = "This is a test";
+		
+	</script>
+</head>
+<body>
+	
+	<input type="button" value = "test" onclick="dosomething()"/>
+	<a id="valuefield">Here it is</a>
+	<p>
+		<a>Today's date is </a><a id = "todayDate">123</a>
+	</p>
+	<script type="text/javascript">
+		function dosomething(){
+			//readTextFile("C:\\Apache24\\htdocs\\JavaScriptTest\\TagHistory.csv");
+			//readTextFile("http://localhost/JavaScriptTest/TagHistory.csv");
+			var data = Papa.parse("C:\\Apache24\\htdocs\\JavaScriptTest\\TagHistory.csv");
+			console.log("finished:", data);
+		}
+	</script>
+	<script type="text/javascript">
+	document.getElementById("todayDate").innerHTML = ("8/18/2015 0:01");
+	function generateDate(vIn){
+		var a = vIn.split("/");
+		var month = parseInt(a[0]);
+		var day = parseInt(a[1]);
+		var b = a[2].split(" ");
+		var year = parseInt(b[0]);
+		var c = b[1].split(":");
+		var hour = parseInt(c[0]);
+		var minute = parseInt(c[1]);
+		return new Date(year, month, day, hour, minute)
+	}
+	alert(generateDate("8/18/2015 0:01"));
+	</script>
+</body>
+</html>
