@@ -14,8 +14,8 @@
 			    },
 			    tooltip : {
 			    	show: true,
-			    	//showContent: true,
-			        trigger: 'axis'
+			    	showContent: true,
+			        trigger: 'axis',
 			        /*
 			        axisPointer:{
 			        	show: true,
@@ -26,7 +26,6 @@
 			        	}
 			        },
 			        */
-			        /*
 			        formatter : function (params) {
 			        	console.log(params);
 			        	//return params[0];
@@ -40,10 +39,9 @@
 			                   + params.value[1] + ', ' 
 			                   + params.value[2];
 			            //alert( data);
-			           
+			            */
 			            return 'no content';
 			        	}
-			        */
 			    },
 			    toolbox: {
 			        show : true,
@@ -131,83 +129,6 @@
 			    ]
 			};
     </script>
-	<script type="text/javascript">
-		var optionLine2 = {
-			    title : {
-			        text : '时间坐标折线图',
-			        subtext : 'dataZoom支持'
-			    },
-			    tooltip : {
-			        trigger: 'item',
-			        formatter : function (params) {
-			            var date = new Date(params.value[0]);
-			            data = date.getFullYear() + '-'
-			                   + (date.getMonth() + 1) + '-'
-			                   + date.getDate() + ' '
-			                   + date.getHours() + ':'
-			                   + date.getMinutes();
-			            return data + '<br/>'
-			                   + params.value[1] + ', ' 
-			                   + params.value[2];
-			        }
-			    },
-			    toolbox: {
-			        show : true,
-			        feature : {
-			            mark : {show: true},
-			            dataView : {show: true, readOnly: false},
-			            restore : {show: true},
-			            saveAsImage : {show: true}
-			        }
-			    },
-			    dataZoom: {
-			        show: true,
-			        start : 70
-			    },
-			    legend : {
-			        data : ['series1']
-			    },
-			    grid: {
-			        y2: 80
-			    },
-			    xAxis : [
-			        {
-			            type : 'time',
-			            splitNumber:10
-			        }
-			    ],
-			    yAxis : [
-			        {
-			            type : 'value'
-			        }
-			    ],
-			    series : [
-			        {
-			            name: 'series1',
-			            type: 'line',
-			            showAllSymbol: true,
-			            symbolSize: function (value){
-			                return Math.round(value[2]/10) + 2;
-			            },
-			            data: (function () {
-			                var d = [];
-			                var len = 0;
-			                var now = new Date();
-			                var value;
-			                while (len++ < 200) {
-			                    d.push([
-			                        new Date(2014, 9, 1, 0, len * 10000),
-			                        (Math.random()*30).toFixed(2) - 0,
-			                        (Math.random()*100).toFixed(2) - 0
-			                    ]);
-			                }
-			                return d;
-			            })()
-			        }
-			    ]
-				
-		};
-	</script>
 </head>
 <body>
     <!-- Prepare a Dom with size (width and height) for ECharts -->
@@ -221,8 +142,6 @@
    	<p><a id="fileContent">File content goes here</a></p>
 	<p><a id="fileContent1">File content goes here</a></p>
 	<p><button onclick="refreshChart()">Refresh Chart Content</button></p>
-	<h1>Line Chart 2:</h1>
-    <div id= "lineChart2" style = "height:400px"></div>
     <script type="text/javascript">
     	function loadCSVData(files){
 			var reader = new FileReader();
@@ -240,19 +159,6 @@
 			reader.readAsText(files[0]);
     	}
     </script>
-	<script type="text/javascript">
-		require.config({
-			paths:{echarts:'js'}		
-		});
-		require (
-			['echarts', 'echarts/chart/line'],
-			function(ec){
-				myChart = ec.init(document.getElementById('lineChart2'));
-				myChart.setOption(optionLine2);
-				
-			}
-		);
-	</script>
     <script type="text/javascript">
 	    // configure for module loader
 	    require.config({
