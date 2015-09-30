@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts - Line Charts</title>
+    <script type="text/javascript">
+    	var dataSet = [];
+    	var dataSet1 = [];
+    	var myChart;
+    	var option;
+		option = {
+			    title : {
+			        text : 'Batch History',
+			        subtext : 'dataZoom Support'
+			    },
+			    tooltip : {
+			    	show: true,
+			    	//showContent: true,
+			        trigger: 'axis',
+			        /*
+			        axisPointer:{
+			        	show: true,
+			        	type: 'cross',
+			        	lineStyle:{
+			        		type:'dashed',
+			        		width:1
+			        	}
+			        },
+			        */
+			        
+			        formatter : function (params) {
+			        	console.log(params);
+			        	
+			            /*
+			        	var date = new Date(params.value[0]);
+			            data = (date.getMonth() + 1) + '-'
+			                   + date.getDate() + ' '
+			                   + date.getHours() + ':'
+			                   + date.getMinutes();
+			            return data + '<br/>'
+			                   + params.value[1] + ', ' 
+			                   + params.value[2];
+			            */
+			        	}
+			        			 
+			    },
+			    toolbox: {
+			        show : true,
+			        feature : {
+			            mark : {show: true},
+			            dataView : {show: true, readOnly: false},
+			            dataZoom:{
+			            	show: true,
+			            	title:{
+			            		dataZoom: 'zoom in/out',
+			            		dataZoomReset: 'zoom reset'
+			            	}
+			            },
+			            restore : {show: true},
+			            saveAsImage : {show: true}
+			        }
+			    },
+			    dataZoom: {
+			        show: true,
+			        start : 70
+			    },
+			    legend : {
+			        data : ['StepNumber']
+			    },
+			    grid: {
+			        y2: 80
+			    },
+			    xAxis : [
+			        {
+			            type : 'time',
+			            splitNumber:5
+			        }
+			    ],
+			    yAxis : [
+			        {
+			            type : 'value'
+			        }
+			    ],
+			    
+			    series : [
+			        {
+			            name: 'Batch Step number',
+			            type: 'line',
+			            //showAllSymbol: true,
+			            //symbolSize: function (value){
+			            //    return Math.round(value[2]/10) + 2;
+			            //},
+			            data: (function () {
+			            	var d = [];
+			            	var len = 0;
+			            	var now = new Date();
+			            	var timeTemp;
+			            	var tempStepLength;
+			            	var prevStepNum;
+			            	var value;
+			            	timeTemp =0; //stores the previous time shift in seconds
+			            	prevStepNum = 1;
+			            	//alert(timeTemp);
+							var prevprevStepNum = 0;
+			            	while (len++ < 500) {
+			            		if (prevprevStepNum > prevStepNum) {
+			            			tempStepLength = 1;
+			            		}
+			            		else{
+			            			tempStepLength = Math.random().toFixed(0)*20*60+300; //generate a random number between 5-25 minutes
+			            		}	
+			            		//alert(tempStepLength);
+			            		
+			            		d.push([
+			            	        new Date(2015, 9, 1, 0,0, timeTemp+tempStepLength),
+			            	        prevStepNum
+			            	        //(Math.random()*10).toFixed(0) - 0
+			            	    ]);
+			            		
+			            		
+			            		//alert(prevStepNum);
+			            		prevprevStepNum = prevStepNum;
+			            		prevStepNum += 1;
+			            		d.push([
+			            			new Date(2015, 9, 1, 0,0, timeTemp+tempStepLength+1), //add one more second
+			            			prevStepNum
+			            		        ]);
+			            		if (prevStepNum >=10) {
+			            			prevStepNum = 1; //resets prevStepNum to 1 
+			            		}
+			            		timeTemp += tempStepLength;
+			            	}
+
+			                return d;
+			            })()
+			        }
+			    ]
+			};
+    </script>
+	<script type="text/javascript">
+		var optionLine2 = {
+			    title : {
+			        text : '时间坐标折线图',
+			        subtext : 'dataZoom支持'
+			    },
+			    tooltip : {
+			        trigger: 'item',
+			        formatter : function (params) {
+			        	console.log (params[0]);
+			        	console.log (params[1]);
+			        	console.log (params[2]);
+			        	console.log (params[3]);
+			        	console.log (params[4]);
+			        	console.log (params[5]);
+			        	console.log (params[6]);
+			        	console.log (params[7]);
+			            var date = new Date(params.value[0]);
+			            data = date.getFullYear() + '-'
+			                   + (date.getMonth() + 1) + '-'
+			                   + date.getDate() + ' '
+			                   + date.getHours() + ':'
+			                   + date.getMinutes();
+			            return data + '<br/>'
+			                   + params.value[1] + ', ' 
+			                   + params.value[2];
+			        }
+			    },
+			    toolbox: {
+			        show : true,
+			        feature : {
+			            mark : {show: true},
+			            dataView : {show: true, readOnly: false},
+			            restore : {show: true},
+			            saveAsImage : {show: true}
+			        }
+			    },
+			    dataZoom: {
+			        show: true,
+			        start : 70
+			    },
+			    legend : {
+			        data : ['series1']
+			    },
+			    grid: {
+			        y2: 80
+			    },
+			    xAxis : [
+			        {
+			            type : 'time',
+			            splitNumber:10
+			        }
+			    ],
+			    yAxis : [
+			        {
+			            type : 'value'
+			        }
+			    ],
+			    series : [
+			        {
+			            name: 'series1',
+			            type: 'line',
+			            showAllSymbol: true,
+			            symbolSize: function (value){
+			                return Math.round(value[2]/10) + 2;
+			            },
+			            data: (function () {
+			                var d = [];
+			                var len = 0;
+			                var now = new Date();
+			                var value;
+			                while (len++ < 200) {
+			                    d.push([
+			                        new Date(2014, 9, 1, 0, len * 10000),
+			                        (Math.random()*30).toFixed(2) - 0,
+			                        (Math.random()*100).toFixed(2) - 0
+			                    ]);
+			                }
+			                return d;
+			            })()
+			        }
+			    ]
+				
+		};
+	</script>
+</head>
+<body>
+    <!-- Prepare a Dom with size (width and height) for ECharts -->
+    <h1>Chart start</h1>
+    <div id="lineChart" style="height:400px"></div>
+    <!-- ECharts import -->
+    <!--<script src="http://echarts.baidu.com/build/dist/echarts.js"></script> -->
+    <script src="js/echarts.js"></script>
+    <h1>Chart end</h1>
+    <p><input type="file" onchange="loadCSVData(this.files)"/></p>
+   	<p><a id="fileContent">File content goes here</a></p>
+	<p><a id="fileContent1">File content goes here</a></p>
+	<p><button onclick="refreshChart()">Refresh Chart Content</button></p>
+	<h1>Line Chart 2:</h1>
+    <div id= "lineChart2" style = "height:400px"></div>
+    <script type="text/javascript">
+    	function loadCSVData(files){
+			var reader = new FileReader();
+			var lines;
+			reader.onload = function(e){
+				var content = reader.result;
+				var allTextLines = content.split(/\r\n|\n/);
+			    //var lines = [];
+			    while (allTextLines.length) {
+			        dataSet.push(allTextLines.shift().split(','));
+			    }
+				document.getElementById("fileContent").innerHTML = dataSet[0];
+				document.getElementById("fileContent1").innerHTML = dataSet[1];
+			};
+			reader.readAsText(files[0]);
+    	}
+    </script>
+	<script type="text/javascript">
+		require.config({
+			paths:{echarts:'js'}		
+		});
+		require (
+			['echarts', 'echarts/chart/line'],
+			function(ec){
+				myChart = ec.init(document.getElementById('lineChart2'));
+				myChart.setOption(optionLine2);
+				
+			}
+		);
+	</script>
+    <script type="text/javascript">
+	    // configure for module loader
+	    require.config({
+	        paths: {
+	            //echarts: 'http://echarts.baidu.com/build/dist'
+	        	echarts: 'js'
+	        }
+	    });
+    
+		require(
+			[
+			 'echarts',
+			 'echarts/chart/line'
+			 ],
+			 function(ec){
+				myChart = ec.init(document.getElementById('lineChart'));
+
+				myChart.setOption(option);
+				for (var i=0; i<5; i++){
+					dataSet1.push(option.series[0].data[i]);
+					
+				}
+				document.getElementById("fileContent").innerHTML = option.series[0].data[0];
+			}
+		); 	
+    </script>
+    <script type="text/javascript">
+    	function refreshChart(){
+    		dataSet.shift();
+    		
+    		var aryTime = [];
+    		
+    		for (var i=0; i<dataSet.length; i++){
+    			
+    			//var row = [];
+    			var dt = new Date();
+    			dt.setTime( Date.parse(dataSet[i][0]) );
+   				aryTime.push([
+   						dt,
+   					//enerateDateFromString(dataSet[i][0]),
+   						parseFloat(dataSet[i][1])]);
+    			/*
+    			aryTime.push(Date.parse(dataSet[i][0]));
+    			aryTime.push(parseFloat(dataSet[i][1]));
+    			*/
+    			//aryTime.push(row);
+    		}
+    		
+    		
+    		option.series[0].data =  aryTime;
+    		option.title.text = "R4715 tag history";
+    		//option.series[0].data = dataSet;
+    		myChart = require('echarts').init(document.getElementById('lineChart'));
+    		myChart.setOption(option);
+    		document.getElementById("fileContent").innerHTML = option.series[0].data.length;
+    	}
+    </script>
+</body>
