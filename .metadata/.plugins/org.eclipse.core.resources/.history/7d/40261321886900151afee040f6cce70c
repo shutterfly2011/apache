@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CandleStick Chart</title>
+	<script src="js/echarts.js"></script>
+	<script type="text/javascript">
+		var dataSet;
+		var file;
+		file = document.getElementById("sourceFile").href;
+		alert(file);
+	</script>
+</head>
+<body>
+	<h2>Step time analysis</h2>
+	<div id="candleStickChart" style="height:400px"></div>
+	
+	<a id="sourceFile" href="c:\Apache24\htdocs\eChartTest\StepTimeStat.csv">Source data</a>
+	
+
+</body>
+</html>

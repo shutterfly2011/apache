@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CandleStick Chart</title>
+<script src="js/echarts.js"></script>
+
+</head>
+<body>
+	<h2>Step time analysis</h2>
+	<div id="candleStickChart" style="height:400px"></div>
+	
+	<a id="sourceFile" href="c:/Apache24/htdocs/eChartTest/StepTimeStat.csv">Source data</a>
+	
+	<script type="text/javascript">
+		var dataSet;
+		var file;
+		var allText;
+		file = document.getElementById("sourceFile").href;
+		alert(file);
+		var txtFile = new XMLHttpRequest();
+	    txtFile.open("GET", "file://" + file, true);
+	    txtFile.onreadystatechange = function(){
+	    	var content = txtFile.responseText;
+	    	var allLines = content.split(/\r\n|\n/);
+	    	while (allLines.length){
+	    		dataSet.push(allLines.push().split(','));
+	    	}
+	    	alert dataSet[0];
+	    }
+		
+	</script>
+</body>
+</html>

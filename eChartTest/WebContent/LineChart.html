@@ -8,13 +8,15 @@
     	var myChart;
     	var option;
     	var optionLine2;
+    	var strTest;
+    	strTest = 'tooltip here';
 		option = {
 			    title : {
 			        text : 'Batch History',
 			        subtext : 'dataZoom Support'
 			    },
 			    tooltip : {
-			    	//show: true,
+			    	show: true,
 			    	//showContent: true,
 			        trigger: 'item',
 			        /*
@@ -29,9 +31,8 @@
 			        */
 			        
 			        formatter : function (params) {
-			        	console.log(params);
-			        	//return 'no info avail.';
-			            
+			        	//console.log(params);
+			        	console.log(params.value[3]);
 			        	var date = new Date(params.value[0]);
 			            data = (date.getMonth() + 1) + '-'
 			                   + date.getDate() + ' '
@@ -112,7 +113,8 @@
 			            		
 			            		d.push([
 			            	        new Date(2015, 9, 1, 0,0, timeTemp+tempStepLength),
-			            	        prevStepNum
+			            	        prevStepNum,
+			            	        30
 			            	        //(Math.random()*10).toFixed(0) - 0
 			            	    ]);
 			            		
@@ -122,7 +124,8 @@
 			            		prevStepNum += 1;
 			            		d.push([
 			            			new Date(2015, 9, 1, 0,0, timeTemp+tempStepLength+1), //add one more second
-			            			prevStepNum
+			            			prevStepNum,
+			            			20
 			            		        ]);
 			            		if (prevStepNum >=10) {
 			            			prevStepNum = 1; //resets prevStepNum to 1 
@@ -145,7 +148,7 @@
 			    },
 			    tooltip : {
 			        trigger: 'item',
-			        formatter : function (params) {
+			        formatter : function (params, ticket, callback) {
 			            console.log (params[0]);
 			        	var date = new Date(params.value[0]);
 			            data = date.getFullYear() + '-'
@@ -153,9 +156,15 @@
 			                   + date.getDate() + ' '
 			                   + date.getHours() + ':'
 			                   + date.getMinutes();
-			            return data + '<br/>'
-			                   + params.value[1] + ', ' 
-			                   + params.value[2];
+			            
+			            var rtn =  data + '<br/>'
+			                   + params.value[2] + ', ' 
+			                   + params.value[3] ;
+			            setTimeout(function (){
+			                // 仅为了模拟异步回调
+			                callback(ticket, 'oh yeah!');
+			            }, 1000)
+			            return rtn;
 			        }
 			    },
 			    toolbox: {
@@ -172,7 +181,7 @@
 			        start : 70
 			    },
 			    legend : {
-			        data : ['series1']
+			        data : ['series1', 'new series']
 			    },
 			    grid: {
 			        y2: 80
@@ -185,7 +194,23 @@
 			    ],
 			    yAxis : [
 			        {
-			            type : 'value'
+			            type : 'value',
+			            position: 'left',
+			            axisLabel: {
+			            	formatter: function(val){
+			            		return val + '#';
+			            	}
+			            }
+			        },
+			        {
+			        	type: 'value',
+			        	position: 'right',
+			        	axisLabel: {
+			        		formatter: function(val){
+			        			return val + ' lbs';
+			        		}
+			        	}	
+			        	
 			        }
 			    ],
 			    series : [
@@ -211,6 +236,25 @@
 			                }
 			                return d;
 			            })()
+			        },
+			        {
+			        	name: 'new series!!',
+			        	type: 'scatter',
+				        showAllSymbol: false,
+				        data: (function(){
+				        	var d = [];
+				        	var len = 0;
+				        	var now = new Date();
+				        	var value;
+				        	while (len++ < 200){
+				        		d.push([
+				        		        new Date(2014, 9, 5,0, len*10000),
+				        		        (Math.random()*20).toFixed(2) - 0,
+				                        (Math.random()*50).toFixed(2) - 0
+				        				]);
+				        	}
+				        	return d;
+				        })()
 			        }
 			    ]
 				
@@ -343,7 +387,7 @@
 			paths:{echarts:'js'}		
 		});
 		require (
-			['echarts', 'echarts/chart/line'],
+			['echarts', 'echarts/chart/line', 'echarts/chart/bar', 'echarts/chart/scatter'],
 			function(ec){
 				myChart = ec.init(document.getElementById('lineChart2'));
 				myChart.setOption(getChart2Option());
@@ -416,7 +460,7 @@
     			ary.push([
     					dt,
     					parseFloat(dataSet[i][1]),
-    					//parseFloat(dataSet[i][2])
+    					parseFloat(dataSet[i][2]),
     					parseFloat(dataSet[i][3])
     					]);
     		}
