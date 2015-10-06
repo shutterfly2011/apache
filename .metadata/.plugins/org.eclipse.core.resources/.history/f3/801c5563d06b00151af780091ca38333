@@ -14,8 +14,8 @@ var option = {
 	        trigger: 'axis',
 	        formatter: function (params) {
 	            var res = params[0].name;
-	            res += '<br/>  Upper Quartile : ' + params[0].value[0] + ' min.  Max : ' + params[0].value[3] + ' min.';
-	            res += '<br/>  Lower Quartile ' + params[0].value[1] + ' min. Min : ' + params[0].value[2] + ' min.';
+	            res += '<br/>  Lower Quartile : ' + params[0].value[0] + '  Max : ' + params[0].value[3];
+	            res += '<br/>  Upper Quartile ' + params[0].value[1] + '  Min : ' + params[0].value[2];
 	            return res;
 	        }
 	    },
@@ -108,7 +108,7 @@ var option = {
 	        	tooltip:{
 	        		trigger:'item',
 	        		formatter: function(params){
-	        			return 'Target: ' +params.value[1] + 'min.';
+	        			return 'Target: ' +params.value[1] + 'min';
 	        		}
 	        	},
 	        	//['ProcessWait',50],['RMCharge',50],['OxFeed',50],['Digest',50],['WaitTransfer',50],['Transfer',50]

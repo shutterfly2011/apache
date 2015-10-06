@@ -14,8 +14,8 @@ var option = {
 	        trigger: 'axis',
 	        formatter: function (params) {
 	            var res = params[0].name;
-	            res += '<br/>  Upper Quartile : ' + params[0].value[0] + ' min.  Max : ' + params[0].value[3] + ' min.';
-	            res += '<br/>  Lower Quartile ' + params[0].value[1] + ' min. Min : ' + params[0].value[2] + ' min.';
+	            res += '<br/>  Lower Quartile : ' + params[0].value[0] + '  Max : ' + params[0].value[3];
+	            res += '<br/>  Upper Quartile ' + params[0].value[1] + '  Min : ' + params[0].value[2];
 	            return res;
 	        }
 	    },
@@ -45,13 +45,12 @@ var option = {
 	            axisTick: {onGap:false},
 	            splitLine: {show:false},
 	            data : ['ProcessWait','RMCharge','OxFeed','Digest','WaitTransfer','Transfer']
-	        }
-	        /*,
+	        },
 	        {
 	        	type: 'category',
 	        	boundaryGap: true,
 	        	data:['ProcessWait','RMCharge','OxFeed','Digest','WaitTransfer','Transfer']
-	        }*/
+	        }
 	        
 	    ],
 	    yAxis : [
@@ -59,13 +58,12 @@ var option = {
 	            type : 'value',
 	            scale:true,
 	            boundaryGap: [0.01, 0.01]
-	        }
-	        /*,
+	        },
 	        {
 	        	type: 'value',
 	        	scale:true,
 	        	boundaryGap: [0.01, 0.01]
-	        }*/
+	        }
 	    ],
 	    series : [
 	        {
@@ -102,17 +100,9 @@ var option = {
 	        {
 	        	name: 'Step time target',
 	        	type: 'scatter',
-	        	symbol: 'diamond',
-	        	color: '#87cefa',
+	        	symbol: 'circle',
 	        	symbolSize: 10,
-	        	tooltip:{
-	        		trigger:'item',
-	        		formatter: function(params){
-	        			return 'Target: ' +params.value[1] + 'min.';
-	        		}
-	        	},
-	        	//['ProcessWait',50],['RMCharge',50],['OxFeed',50],['Digest',50],['WaitTransfer',50],['Transfer',50]
-	        	data:[['ProcessWait',50],['RMCharge',50],['OxFeed',50],['Digest',50],['WaitTransfer',50],['Transfer',50]]
+	        	data:[50, 50, 50 ,50, 50, 50]
 	        }
 	    ]
 	};
@@ -160,11 +150,10 @@ var option = {
 				                 parseFloat(dataSet[i][3]),
 				                 parseFloat(dataSet[i][4])
 				                 ]);
-				//targetData.push([parseFloat(dataSet[i][5]), parseFloat(dataSet[i][5])]);
-				targetData.push([dataSet[i][0], parseFloat(dataSet[i][5])]);
+				targetData.push([parseFloat(dataSet[i][5]), parseFloat(dataSet[i][5])]);
 			}
 			option.xAxis[0].data = xAxisData;
-			//option.xAxis[1].data = xAxisData;
+			option.xAxis[1].data = xAxisData;
 			option.series[0].data = optionData;
 			option.series[1].data = targetData;
 			candleStickChart.setOption(option);
