@@ -1,0 +1,6 @@
+Phase,Uvar,Lvar,Min,Max, Target
+ProcessWait,400,100,1,1000,50
+RMCharge,25,10,5,100,50
+OxFeed,25,10,5,100,50
+Digest,50,25,15,75,50
+Transfer,10,9,7,12,50

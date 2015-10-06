@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CandleStick Chart</title>
+<script src="js/echarts.js"></script>
+<!-- <script src="js/jquery-2.1.4.min.js"></script>-->
+<!-- <script src="js/jquery.csv-0.71.js"></script>  -->
+<script type="text/javascript">
+var dataSet;
+var option = {
+	    tooltip : {
+	        trigger: 'axis',
+	        formatter: function (params) {
+	            var res = params[0].seriesName + ' ' + params[0].name;
+	            res += '<br/>  -25% : ' + params[0].value[0] + '  Max : ' + params[0].value[3];
+	            res += '<br/>  +25% : ' + params[0].value[1] + '  Min : ' + params[0].value[2];
+	            return res;
+	        }
+	    },
+	    legend: {
+	        data:['Step time statistics']
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            mark : {show: true},
+	            dataZoom : {show: true},
+	            dataView : {show: true, readOnly: false},
+	            restore : {show: true},
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    dataZoom : {
+	        show : true,
+	        realtime: true,
+	        start : 0,
+	        end : 50
+	    },
+	    xAxis : [
+	        {
+	            type : 'category',
+	            boundaryGap : true,
+	            axisTick: {onGap:false},
+	            splitLine: {show:false},
+	            data : ['ProcessWait','RMCharge','OxFeed','Digest','WaitTransfer','Transfer']
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value',
+	            scale:true,
+	            boundaryGap: [0.01, 0.01]
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'Step times',
+	            type:'k',
+	            barMaxWidth: 20,
+	            itemStyle: {
+	                normal: {
+	                    color: 'red',           
+	                    color0: 'lightgreen',   
+	                    lineStyle: {
+	                        width: 2,
+	                        color: 'orange',    
+	                        color0: 'green'     
+	                    }
+	                },
+	                emphasis: {
+	                    color: 'black',         
+	                    color0: 'white'         
+	                }
+	            },
+	            data:[
+	                {
+	                    [2320.26,2302.6,2287.3,2362.94],
+	                    ]
+	        	}
+	        }
+	    ]
+	};
+</script>
+</head>
+<body>
+	<h2>Step time analysis</h2>
+	<div id="candleStickChart" style="height:400px"></div>
+	
+	<!-- <a id="sourceFile" href="c:/Apache24/htdocs/eChartTest/StepTimeStat.csv">Source data</a> -->
+	<a id="sourceFile" href="http://localhost/eChartTest/StepTimeStat.csv">Source data</a>
+	<p>
+		<a id="fileContent">File content (to be loaded)</a>
+	</p>
+	<script type="text/javascript">
+		var file;
+		var allText;
+		file = document.getElementById("sourceFile").href;
+		//alert(file);
+		var txtFile = new XMLHttpRequest();
+	    txtFile.open("GET", file, true);
+	    txtFile.onreadystatechange = function(){
+	    	dataSet= [];
+	        if(txtFile.readyState === 4)
+	        {
+	            if(txtFile.status === 200 || txtFile.status == 0)
+	            {
+	            	var content = txtFile.responseText;
+	    	    	var allLines = content.split(/\r\n|\n/);
+	    	    	while (allLines.length){
+	    	    		dataSet.push(allLines.shift().split(','));
+	    	    	}
+	    	    	document.getElementById("fileContent").innerHTML = 'Data loaded: ' + dataSet[0];
+	    	    	
+	            }
+	        }
+	    	
+	    	
+	    	
+	    }
+		txtFile.send();
+		//var data = $.csv.toObjects(file);
+			
+	</script>
+</body>
+</html>
