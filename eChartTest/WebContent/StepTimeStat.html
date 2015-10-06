@@ -20,7 +20,7 @@ var option = {
 	        }
 	    },
 	    legend: {
-	        data:['Step time statistics']
+	        data:['Step time statistics', 'Target Step Time']
 	    },
 	    toolbox: {
 	        show : true,
@@ -71,11 +71,11 @@ var option = {
 	        {
 	            name:'Step times',
 	            type:'k',
-	            /*
-	            barMaxWidth: 20,
+	            
+	            barMaxWidth: 80,
 	            itemStyle: {
 	                normal: {
-	                    color: 'red',           
+	                    color: 'green',           
 	                    color0: 'lightgreen',   
 	                    lineStyle: {
 	                        width: 2,
@@ -84,11 +84,11 @@ var option = {
 	                    }
 	                },
 	                emphasis: {
-	                    color: 'black',         
+	                    color: 'green',         
 	                    color0: 'white'         
 	                }
 	            },
-	            */
+	            
 	            data:[ 	
 	                	//[1stQ, 3rdQ,Min,Max]
 	                    [45, 60, 30, 80],
@@ -103,7 +103,6 @@ var option = {
 	        	name: 'Step time target',
 	        	type: 'scatter',
 	        	symbol: 'diamond',
-	        	color: '#87cefa',
 	        	symbolSize: 10,
 	        	tooltip:{
 	        		trigger:'item',
@@ -111,8 +110,19 @@ var option = {
 	        			return 'Target: ' +params.value[1] + 'min.';
 	        		}
 	        	},
+				itemStyle:{
+					normal:{
+						color:'lightred',
+						borderWidth:0,
+						label:{show:false}
+					},
+					emphasis:{
+						color: 'red',
+						
+					}
+				},
 	        	//['ProcessWait',50],['RMCharge',50],['OxFeed',50],['Digest',50],['WaitTransfer',50],['Transfer',50]
-	        	data:[['ProcessWait',50],['RMCharge',50],['OxFeed',50],['Digest',50],['WaitTransfer',50],['Transfer',50]]
+	        	data:[['ProcessWait',200],['RMCharge',100],['OxFeed',50],['Digest',20],['WaitTransfer',20],['Transfer',20]]
 	        }
 	    ]
 	};
@@ -139,7 +149,7 @@ var option = {
 	<div id="candleStickChart" style="height:400px"></div>
 	
 	<!-- <a id="sourceFile" href="c:/Apache24/htdocs/eChartTest/StepTimeStat.csv">Source data</a> -->
-	<a id="sourceFile" href="http://localhost/eChartTest/StepTimeStatWithTargets.csv">Source data</a>
+	<a id="sourceFile" href="http://usfrpvmesepitc2.dow.com/lab/StepTimeStatWithTargets.csv">Source data</a>
 	<p>
 		<a id="fileContent">File content (to be loaded)</a>
 	</p>
