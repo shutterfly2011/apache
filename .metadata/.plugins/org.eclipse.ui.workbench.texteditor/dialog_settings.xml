@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="scatter" key="selection"/>
+		<item value="var option" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="var option"/>
 			<item value="scatter"/>
 			<item value="&apos;k&apos;"/>
 			<item value="length"/>
@@ -15,7 +16,6 @@
 			<item value="this is "/>
 			<item value="/line"/>
 			<item value="\line"/>
-			<item value="line"/>
 		</list>
 		<list key="replacehistory">
 		</list>
