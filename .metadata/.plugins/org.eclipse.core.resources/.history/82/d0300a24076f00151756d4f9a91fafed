@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Step Time Analysis</title>
+<script src="js/echarts.js"></script>
+<!-- <script src="js/jquery-2.1.4.min.js"></script>-->
+<!-- <script src="js/jquery.csv-0.71.js"></script>  -->
+<script type="text/javascript">
+</script>
+</head>
+<body>
+	<h2>Step time analysis</h2>
+	<div id="chart" style="height:400px"></div>
+	
+	<!-- <a id="sourceFile" href="c:/Apache24/htdocs/eChartTest/StepTimeStat.csv">Source data</a> -->
+	<!-- <a id="sourceFile" href="http://usfrpvmesepitc2.dow.com/lab/StepTimeStatWithTargets.csv">Source data</a> -->
+	<a id="sourceFile" href="http://localhost/eChartTest/StepTimeStatWithTargets.csv">Source data</a>
+	<p>
+		<a id="fileContent">File content (to be loaded)</a>
+	</p>
+	<script type="text/javascript">
+	require.config({
+        paths: {
+            echarts: 'js'
+        }
+    });
+	require(
+            [
+                'echarts',
+                'echarts/chart/line','echarts/chart/bar'  // require the specific chart type
+            ],
+            function (ec) {
+            	chart = ec.init(document.getElementById('chart'));
+            	chart.setOption(option);
+            }
+    );
+
+	</script>
+	<script type="text/javascript">
+	
+	</script>
+</body>
+</html>

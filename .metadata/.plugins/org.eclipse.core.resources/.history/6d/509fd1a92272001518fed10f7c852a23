@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Step Time Trend Analysis</title>
+<script src="js/echarts.js"></script>
+<script type="text/javascript">
+	var cht;
+	var dataSet;
+	var option = {
+		    title : {
+		        text: 'Step time trend: ProcessWait',
+		        subtext: 'TX_KR22'
+		    },
+		    tooltip : {
+		        trigger: 'axis',
+		        showDelay : 0,
+		        formatter : function (params) {
+		        	var dt = new Date(params.value[0]);
+		        	return 'Date: ' + dt.getMonth() + '/' + dt.getDate() + ' ' + dt.getHours() + ':' 
+                   	+ dt.getMinutes() + ' <br/>'
+                   	+ params.seriesName + ': ' 
+                   	+ params.value[1] + ' min';	
+		        	
+		        },  
+		        axisPointer:{
+		            show: true,
+		            type : 'cross',
+		            lineStyle: {
+		                type : 'dashed',
+		                width : 1
+		            }
+		        }
+		    },
+		    legend: {
+		        data:['Actual step time','step time target']
+		    },
+		    dataZoom : {
+		        show : true,
+		        realtime: true,
+		        start : 0,
+		        end : 100
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataZoom : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    xAxis : [
+		        {
+		            type : 'value',
+		            scale:true,
+		            axisLabel : {
+		                formatter: '{value}'
+		            }
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value',
+		            scale:true,
+		            axisLabel : {
+		                formatter: '{value} min'
+		            }
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'Actual step time',
+		            type:'scatter',
+		            data: [],
+		            markPoint : {
+		                data : [
+		                    {type : 'max', name: 'min'},
+		                    {type : 'min', name: 'max'}
+		                ]
+		            },
+		            markLine : {
+		                data : [
+		                    {type : 'average', name: 'average'}
+		                ]
+		            }
+		        },
+		        {
+		            name:'Step time target',
+		            type:'scatter',
+		            data: [],
+		            markPoint : {
+		                data : [
+		                    {type : 'max', name: 'min'},
+		                    {type : 'min', name: 'max'}
+		                ]
+		            },
+		            markLine : {
+		                data : [
+		                    {type : 'average', name: 'avg'}
+		                ]
+		            }
+		        }
+		    ]
+		};
+		require.config({
+	        paths: {
+	            echarts: 'js'
+	        }
+	    });
+		require(
+	            [
+	                'echarts',
+	                'echarts/chart/scatter' 
+	            ],
+	            function (ec) {
+	            	cht = ec.init(document.getElementById('scatterTrendChart'));
+	            	cht.setOption(option);
+	            }
+	    );               
+</script>
+
+</head>
+<body>
+	<h2>Step time analysis</h2>
+	<div id="scatterTrendChart" style="height:400px"></div>
+	<p>
+		<a id="sourceFile" href="../Tx_KR22_24240_1OxFeed.csv">Download source data here</a>
+	</p>
+	<p>
+		<a id="fileContent">File content (to be loaded)</a>
+	</p>
+	<script type="text/javascript">
+		//this part of the code handles graphics output
+		function loadGraph()
+		{
+			// configure for module loader
+			var dsStepTime = [];
+			var dsTarget = [];
+			for (var i=1; i<dataSet.length; i++){
+				dsStepTime.push([
+				                 Date.parse(dataSet[i][11]),
+				                 parseInt(dataSet[i][7])
+				                 ]
+						);
+				dsTarget.push([
+								Date.parse(dataSet[i][11]),
+								parseInt(dataSet[i][8])
+				               ]
+						);
+				
+			}
+			//option.title.subtext = 'Product:' + dataSet[1][4] + '  Step name: ' + dataSet[1][6];
+			//console.log(dataSet[1][4]);
+			var tp = dataSet[1][4] + ' Step time vs Target trend';
+			option.title.text = tp;
+			var tp1 =  dataSet[1][6] + ''; 
+			option.title.subtext = 'Step name: ' + tp1;
+			option.series[0].data = dsStepTime;
+			option.series[1].data = dsTarget;
+			cht.setOption(option);
+	    }		
+		
+	</script>
+	<script type="text/javascript">
+		//this section loads the csv file from the server
+		var file;
+		var allText;
+		file = document.getElementById("sourceFile").href;
+		var txtFile = new XMLHttpRequest();
+	    txtFile.open("GET", file, true);
+	    txtFile.onreadystatechange = function(){
+	    	dataSet= [];
+	        if(txtFile.readyState === 4)
+	        {
+	            if(txtFile.status === 200 || txtFile.status == 0)
+	            {
+	            	var content = txtFile.responseText;
+	    	    	var allLines = content.split(/\r\n|\n/);
+	    	    	while (allLines.length){
+	    	    		dataSet.push(allLines.shift().split(','));
+	    	    	}
+	    	    	document.getElementById("fileContent").innerHTML = 'Data loaded: ' + dataSet[0];
+	    	    	loadGraph();
+	    	  	}
+	            else if (tstFile.status === 404){
+	            	document.getElementById("fileContent").innerHTML = 'Error, the csv data file is not found!'
+	            }
+	        }
+	    }
+		txtFile.send();
+		
+	</script>
+</body>
+</html>

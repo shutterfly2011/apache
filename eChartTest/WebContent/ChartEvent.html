@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Step Time Analysis</title>
+<script src="js/echarts.js"></script>
+<!-- <script src="js/jquery-2.1.4.min.js"></script>-->
+<!-- <script src="js/jquery.csv-0.71.js"></script>  -->
+<script type="text/javascript">
+
+var option = {
+	    tooltip : {
+	        trigger: 'axis'
+	    },
+	    legend: {
+	        data:['High','Low']
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            mark : {show: true},
+	            dataView : {readOnly:false},
+	            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+	            restore : {show: true},
+	            saveAsImage : {show: true}
+	        }
+	    },
+	    calculable : true,
+	    dataZoom : {
+	        show : true,
+	        realtime : true,
+	        start : 0,
+	        end : 10
+	    },
+	    xAxis : [
+	        {
+	            type : 'category',
+	            boundaryGap : true,
+	            data : function (){
+	                var list = [];
+	                for (var i = 1; i <= 30; i++) {
+	                    list.push('2013-03-' + i);
+	                }
+	                return list;
+	            }()
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'value'
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'High',
+	            type:'line',
+	            data:function (){
+	                var list = [];
+	                for (var i = 1; i <= 30; i++) {
+	                    list.push(Math.round(Math.random()* 30) + 30);
+	                }
+	                return list;
+	            }()
+	        },
+	        {
+	            name:'Low',
+	            type:'bar',
+	            data:function (){
+	                var list = [];
+	                for (var i = 1; i <= 30; i++) {
+	                    list.push(Math.round(Math.random()* 10));
+	                }
+	                return list;
+	            }()
+	        }
+	    ]
+	};
+	var ecConfig = require('echarts/config');
+	function eConsole(param) {
+	    var mes = '【' + param.type + '】';
+	    if (typeof param.seriesIndex != 'undefined') {
+	        mes += '  seriesIndex : ' + param.seriesIndex;
+	        mes += '  dataIndex : ' + param.dataIndex;
+	    }
+	    if (param.type == 'hover') {
+	        document.getElementById('hover-console').innerHTML = 'Event Console : ' + mes;
+	    }
+	    else {
+	        document.getElementById('console').innerHTML = mes;
+	    }
+	    console.log(param);
+	}
+	/*
+	// -------global
+	REFRESH: 'refresh',
+	RESTORE: 'restore',
+	RESIZE: 'resize',
+	CLICK: 'click',
+	DBLCLICK: 'dblclick',
+	HOVER: 'hover',
+	MOUSEOUT: 'mouseout',
+	// -------yewu jiao hu luoji
+	DATA_CHANGED: 'dataChanged',
+	DATA_ZOOM: 'dataZoom',
+	DATA_RANGE: 'dataRange',
+	DATA_RANGE_HOVERLINK: 'dataRangeHoverLink',
+	LEGEND_SELECTED: 'legendSelected',
+	LEGEND_HOVERLINK: 'legendHoverLink',
+	MAP_SELECTED: 'mapSelected',
+	PIE_SELECTED: 'pieSelected',
+	MAGIC_TYPE_CHANGED: 'magicTypeChanged',
+	DATA_VIEW_CHANGED: 'dataViewChanged',
+	TIMELINE_CHANGED: 'timelineChanged',
+	MAP_ROAM: 'mapRoam',
+	*/
+	myChart.on(ecConfig.EVENT.CLICK, eConsole);
+	myChart.on(ecConfig.EVENT.DBLCLICK, eConsole);
+	//myChart.on(ecConfig.EVENT.HOVER, eConsole);
+	myChart.on(ecConfig.EVENT.DATA_ZOOM, eConsole);
+	myChart.on(ecConfig.EVENT.LEGEND_SELECTED, eConsole);
+	myChart.on(ecConfig.EVENT.MAGIC_TYPE_CHANGED, eConsole);
+	myChart.on(ecConfig.EVENT.DATA_VIEW_CHANGED, eConsole);
+	                    
+
+</script>
+</head>
+<body>
+	<h2>Step time analysis</h2>
+	<div id="chart" style="height:400px"></div>
+	<p>
+		<a id = "hover-console"></a>
+	</p>
+		
+	<p>
+		<a id = "console"></a>
+	</p>
+	<script type="text/javascript">
+	require.config({
+        paths: {
+            echarts: 'js'
+        }
+    });
+	require(
+            [
+                'echarts',
+                'echarts/chart/line','echarts/chart/bar'  // require the specific chart type
+            ],
+            function (ec) {
+            	chart = ec.init(document.getElementById('chart'));
+            	chart.setOption(option);
+            }
+    );
+
+	</script>
+	
+</body>
+</html>

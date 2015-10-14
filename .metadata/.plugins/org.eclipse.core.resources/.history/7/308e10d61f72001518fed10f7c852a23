@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Step Time Trend Analysis</title>
+<script src="js/echarts.js"></script>
+
+</head>
+<body>
+	<h2>Step time analysis</h2>
+	<div id="scatterTrendChart" style="height:400px"></div>
+
+</body>
+</html>
