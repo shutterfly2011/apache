@@ -7,6 +7,30 @@
 <script type="text/javascript">
 	var cht;
 	var dataSet;
+	var ecConfig;
+	require.config({
+        paths: {
+            echarts: 'js'
+        }
+    });
+	
+
+	function eConsole(param) {
+	    var mes = '【' + param.type + '】';
+	    if (typeof param.seriesIndex != 'undefined') {
+	        mes += '  seriesIndex : ' + param.seriesIndex;
+	        mes += '  dataIndex : ' + param.dataIndex;
+	    }
+	    if (param.type == 'hover') {
+	        document.getElementById('eventConsole').innerHTML = 'Event Console : ' + mes;
+	    }
+	    else {
+	        document.getElementById('eventConsole').innerHTML = mes;
+	    }
+	    console.log(param);
+	};
+
+	
 	var option = {
 		    title : {
 		        text: 'Step time trend: ProcessWait'
@@ -22,20 +46,6 @@
                    	+ params.value[1] + ' min';	
 		        	
 		        }
-		    	/*,  
-		        axisPointer:{
-		            show: true,
-		            type : 'cross',
-		            lineStyle: {
-		                type : 'dashed',
-		                width : 1
-		            },
-		            formatter: function(params){
-		            	console.log(params);
-		            	return '';
-		            }
-		        }
-		    	*/
 		    },
 		    legend: {
 		        data:['Step time','Target']
@@ -114,11 +124,8 @@
 		        }
 		    ]
 		};
-		require.config({
-	        paths: {
-	            echarts: 'js'
-	        }
-	    });
+	
+		//ecConfig = require('config');	
 		require(
 	            [
 	                'echarts',
@@ -127,10 +134,22 @@
 	            function (ec) {
 	            	cht = ec.init(document.getElementById('scatterTrendChart'));
 	            	cht.setOption(option);
+					/*
+	            	cht.on(ecConfig.EVENT.CLICK, eConsole);
+	            	cht.on(ecConfig.EVENT.DBLCLICK, eConsole);
+	            	//cht.on(ecConfig.EVENT.HOVER, eConsole);
+	            	cht.on(ecConfig.EVENT.DATA_ZOOM, eConsole);
+	            	cht.on(ecConfig.EVENT.LEGEND_SELECTED, eConsole);
+	            	cht.on(ecConfig.EVENT.MAGIC_TYPE_CHANGED, eConsole);
+	            	cht.on(ecConfig.EVENT.DATA_VIEW_CHANGED, eConsole);
+					*/
 	            }
-	    );               
+	    );   
 </script>
 
+<script type="text/javascript"> 
+
+</script> 
 </head>
 <body>
 	<h2 id="chartTitle">Step time analysis</h2>
@@ -140,6 +159,9 @@
 	</p>
 	<p>
 		<a id="fileContent">File content (to be loaded)</a>
+	</p>
+	<p>
+		<a id="eventConsole">Events handling</a>
 	</p>
 	<script type="text/javascript">
 		//this part of the code handles graphics output
