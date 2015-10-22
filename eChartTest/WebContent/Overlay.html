@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Overlay Charts</title>
+    <script type="text/javascript">
+    	var dataSet = [];
+    	var chtOverlay;
+    	var option;
+    	var aryColors = ['Red','Blue','Green','OrangeRed', 'BlueViolet','LimeGreen','DarkRed','SteelBlue','YellowGreen', 'Black'];
+    	function oSeries(strName, strLineType, ds, strColor, yAxisId){
+    		var retVal = new Object();
+    		retVal.name = strName;
+    		retVal.type = 'line';
+    		retVal.yAxisIndex = yAxisId;		
+    		retVal.itemStyle = new Object();
+    		retVal.itemStyle.normal = new Object();
+    		retVal.itemStyle.normal.lineStyle = new Object();
+    		retVal.itemStyle.normal.lineStyle.type = strLineType;
+    		retVal.itemStyle.normal.lineStyle.color = strColor;
+            retVal.data = ds;
+            return retVal;
+    	};
+    	option = {
+    		    title : {
+    		        text: 'Overlay Chart'
+    		    },
+    		    tooltip : {
+    		        trigger: 'axis',
+    		        axisPointer:{
+    		            show: true,
+    		            type : 'cross',
+    		            lineStyle: {
+    		                type : 'dashed',
+    		                width : 1
+    		            }
+    		        },
+    		        formatter : function (params) {
+    		            return 'BatchId: ' + params.seriesName + '<br/>'
+    		                   + params.value[1] + ' @ ' + parseInt(params.value[0]/60000) + ' min';
+    		        }
+    		    },
+    		    dataZoom : {
+    		        show : true,
+    		        realtime: true,
+    		        start : 0,
+    		        end : 100
+    		    },
+    		    legend: {
+    		        data:[]
+    		    },
+    		    toolbox: {
+    		        show : true,
+    		        feature : {
+    		            mark : {show: true},
+    		            dataZoom : {show: true},
+    		            dataView : {show: true, readOnly: false},
+    		            //magicType : {show: true, type: ['line', 'bar']},
+    		            restore : {show: true},
+    		            saveAsImage : {show: true}
+    		        }
+    		    },
+    		    calculable : true,
+    		    xAxis : [
+    		        {
+    		            type: 'value',
+    		            axisLabel : {
+    		                formatter: function(param){
+    		                				return parseInt(param/60000) + ' min';
+    		                				}
+    		            }
+    		        }
+    		    ],
+    		    yAxis : [
+    		        {
+    		            type: 'value',
+    		            position: 'left',
+    		            axisLine: {
+    		                lineStyle: {
+    		                    color: 'Blue'
+    		                }
+    		            }
+    		        },
+    		        {
+    		        	type:'value',
+    		        	position: 'right',
+    		        	axisLine:{
+    		        		lineStyle:{
+    		        			color: 'BlueViolet'
+    		        		}
+    		        	}
+    		        }
+    		    ],
+    		    series : [
+    		            /*  
+    		        {
+    		            name:'data1',
+    		            type:'line',
+    		            data:[
+    		                [1.5, 10], [5, 7], [8, 8], [12, 6], [11, 12], [16, 9], [14, 6], [17, 4], [19, 9]
+    		            ]
+    		        },
+    		        {
+    		            name:'data2',
+    		            type:'line',
+    		            itemStyle:{
+    		            	normal:{
+	    		            	lineStyle:{
+	    		            		type:'dashed'
+	    		            	}
+    		            	},
+    		            	emphasis:{
+    		            		lineStyle:{
+	    		            		type:'solid'
+	    		            	}
+    		            	}
+    		            },
+    		            data:[
+    		                [1, 2], [2, 3], [4, 2], [7, 5], [11, 2], [18, 3]
+    		            ]
+    		        }*/
+    		        
+    		    ]
+    		};
+    		                    
+    </script>
+</head>
+<body>
+    <!-- Prepare a Dom with size (width and height) for ECharts -->
+    <h1>Overlay Chart</h1>
+    <div id="overlayChart" style="height:600px"></div>
+    <p>
+    	
+		<a>Line up step: </a><input id="lineUpStep" type="text" name="lineUpStep" value="100"><button onclick='onUpdate()'>Refresh</button>
+	</p>
+	
+    <p>
+		<a id="sourceFile" href="../overlaySource.csv">Download source data here</a>
+	</p>
+	<p>
+		<a id="fileContent">File content (to be loaded)</a>
+	</p>
+	
+    <!-- ECharts import -->
+    <!--<script src="http://echarts.baidu.com/build/dist/echarts.js"></script> -->
+    <script src="js/echarts.js"></script>
+    <script type="text/javascript">
+		require.config({
+			paths:{echarts:'js'}		
+		});
+		require (
+			['echarts', 'echarts/chart/line'],
+			function(ec){
+				chtOverlay = ec.init(document.getElementById('overlayChart'));
+				chtOverlay.setOption(option);
+			}
+		);
+	</script>
+	<script>
+		function Right(str, n){
+		    if (n <= 0)
+		       return "";
+		    else if (n > String(str).length)
+		       return str;
+		    else {
+		       var iLen = String(str).length;
+		       return String(str).substring(iLen-n, iLen);
+		    }
+		};
+		function onUpdate(){
+			loadGraph(document.getElementById('lineUpStep').value );
+		};
+		//this function loads the contents of the dataset and prepares for the chart data
+		function loadGraph(nLineUpStep){
+			var dsTabName = [];
+			var dsSeriesName = []; //data set for the series names, which are the batch ids.
+			var dsLeftAxis = []; //the data set for left axis (profile data), it's a three dimensional array first dim is tab, second dim is profile, third contains the value pairs.
+			var dsRightAxis = new Array(); //the data for right axis -- the reference data
+			var dsStepTimeStamp = [];
+			var dsDeltaTime = [];
+			var dsSeriesStartTime = [];
+			var strTempBatchId = '';
+			var nTabId, nSeriesId, i, j;
+			var nTimeDelta;
+			//var nLineUpStep = 100; //todo: this will be variable in practice
+			var strLineUpStep = '_PEVENT'; //todo: change this to sstep in the production code
+			var nPrevStep;
+			//first identify all the tabs and series (batches), as well as batch start, end times, plus offset values
+			for (i=1; i<dataSet.length; i++){
+				if (dataSet[i][4] != '' && dsTabName.indexOf(dataSet[i][4]) == -1 ) { //check if the index of tabname, if it doesn't exist, add it
+					dsTabName.push(dataSet[i][4]);
+				}
+				//get all the series(batchid)
+				if (dataSet[i][3] != ''  
+						&& (Right(dataSet[i][2] , strLineUpStep.length)).toUpperCase() == strLineUpStep //the value equals the line up step 
+						&& dsSeriesName.indexOf(dataSet[i][3]) == -1 //the series name doesn't exist yet
+						&& dataSet[i][1] == nLineUpStep
+					)
+				{
+					dsSeriesName.push(dataSet[i][3]);
+					dsDeltaTime.push( Date.parse(dataSet[i][0]) );
+				}				
+			}
+			//now add the series and tab data into a big dataset			
+			//prepare the dimensions of the dataset
+			for (i=0; i<dsTabName.length; i++){
+				dsLeftAxis.push([]);
+				for (j=0; j<dsSeriesName.length; j++){
+					dsLeftAxis[i].push([]);
+				}
+			}
+			for (i=0; i<dsSeriesName.length; i++){
+				dsRightAxis.push([]);	
+			}
+			
+			nPrevStep =0;
+			for (i=1; i<dataSet.length; i++){ //skip the first row, which contains the column headers
+				nSeriesId = dsSeriesName.indexOf(dataSet[i][3]);
+				if (nSeriesId != -1) {
+					nTimeDelta = dsDeltaTime[nSeriesId];
+					var dt = new Date(dataSet[i][0]);
+					//here add the right axis data, note we need to generate the steps
+					if (dataSet[i][5] == 'yRight'){
+						if (nPrevStep != dataSet[i][1]){
+							dsRightAxis[nSeriesId].push([dt-nTimeDelta-1, nPrevStep]);
+						}
+						dsRightAxis[nSeriesId].push([dt-nTimeDelta, dataSet[i][1]]);
+						nPrevStep = dataSet[i][1];
+					}
+					//add the time-value paire to their corresponding tab-series arrays
+					if (dataSet[i][5] == 'yLeft' && dataSet[i][4] != ''){
+						console.log(i);
+						nTabId = dsTabName.indexOf(dataSet[i][4]);
+						//nSeriesId = dsSeriesName.indexOf(dataSet[i][3]);
+						if (nTabId >=0 && nSeriesId >=0){
+							dsLeftAxis[nTabId][nSeriesId].push([ dt-nTimeDelta, dataSet[i][1] ]);
+						}
+					}
+				}	
+			}
+			
+				
+			//now connect them with the chart options
+			for (i=0; i<1; i++){
+				for (j=0;j<dsSeriesName.length; j++){
+					option.series.push (oSeries(dsSeriesName[j],'solid', dsLeftAxis[i][j], aryColors[j], 0));
+				}
+			}
+			for (i=0; i<dsSeriesName.length; i++){
+				//add right axis
+				option.series.push(oSeries( dsSeriesName[i], 'dashed', dsRightAxis[i],aryColors[i], 1));
+				option.legend.data.push(dsSeriesName[i]);
+			}
+	
+		}
+	</script>
+	<script type="text/javascript">
+		//this section loads the csv file from the server
+		var file;
+		var allText;
+		file = document.getElementById("sourceFile").href;
+		var txtFile = new XMLHttpRequest();
+	    txtFile.open("GET", file, true);
+	    txtFile.onreadystatechange = function(){
+	    	dataSet= [];
+	        if(txtFile.readyState === 4)
+	        {
+	            if(txtFile.status === 200 || txtFile.status == 0)
+	            {
+	            	var content = txtFile.responseText;
+	    	    	var allLines = content.split(/\r\n|\n/);
+	    	    	while (allLines.length){
+	    	    		dataSet.push(allLines.shift().split(','));
+	    	    	}
+	    	    	document.getElementById("fileContent").innerHTML = 'Data loaded: ' + dataSet[0];
+	    	    	loadGraph(document.getElementById('lineUpStep').value );
+	    	  	}
+	            else if (tstFile.status === 404){
+	            	document.getElementById("fileContent").innerHTML = 'Error, the csv data file is not found!'
+	            }
+	        }
+	    }
+		txtFile.send();
+		
+	</script>
+</body>
