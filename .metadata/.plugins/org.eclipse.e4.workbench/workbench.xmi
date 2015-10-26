@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_oO0Y0GndEeWDrJt3i5IrTw" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_oO0Y0WndEeWDrJt3i5IrTw" bindingContexts="_oO2O9WndEeWDrJt3i5IrTw">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;ChartEvent.html&quot; tooltip=&quot;eChartTest/WebContent/ChartEvent.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/ChartEvent.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;StepTimeTrend1.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeTrend1.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/StepTimeTrend1.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;StepTimeTrend.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeTrend.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/StepTimeTrend.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;StepTimeStat.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeStat.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/StepTimeStat.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.jsdt.ui.CompilationUnitEditor&quot; name=&quot;fileUtil.js&quot; tooltip=&quot;eChartTest/WebContent/js/fileUtil.js&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/js/fileUtil.js&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;lineScatter.html&quot; tooltip=&quot;eChartTest/WebContent/lineScatter.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/lineScatter.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;LineChart.html&quot; tooltip=&quot;eChartTest/WebContent/LineChart.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/LineChart.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.jsdt.ui.CompilationUnitEditor&quot; name=&quot;echarts.js&quot; tooltip=&quot;eChartTest/WebContent/js/echarts.js&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/js/echarts.js&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;eChart1.html&quot; tooltip=&quot;eChartTest/WebContent/eChart1.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/eChart1.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;javaScriptTest1.html&quot; tooltip=&quot;eChartTest/WebContent/javaScriptTest1.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/javaScriptTest1.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;jQueryTest.html&quot; tooltip=&quot;JavaScriptTest/jQueryTest.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/JavaScriptTest/jQueryTest.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;GaugeChart1.html&quot; tooltip=&quot;eChartTest/WebContent/GaugeChart1.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/GaugeChart1.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;htmlContainer.html&quot; tooltip=&quot;JavaScriptTest/htmlContainer.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/JavaScriptTest/htmlContainer.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.jsdt.ui.CompilationUnitEditor&quot; name=&quot;read-csv.js&quot; tooltip=&quot;JavaScriptTest/js/read-csv.js&quot;>&#xD;&#xA;&lt;persistable path=&quot;/JavaScriptTest/js/read-csv.js&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;Overlay.html&quot; tooltip=&quot;eChartTest/WebContent/Overlay.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/Overlay.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;LineChart.html&quot; tooltip=&quot;eChartTest/WebContent/LineChart.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/LineChart.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;ChartEvent.html&quot; tooltip=&quot;eChartTest/WebContent/ChartEvent.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/ChartEvent.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;StepTimeTrend1.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeTrend1.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/StepTimeTrend1.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;StepTimeTrend.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeTrend.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/StepTimeTrend.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;StepTimeStat.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeStat.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/StepTimeStat.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.jsdt.ui.CompilationUnitEditor&quot; name=&quot;fileUtil.js&quot; tooltip=&quot;eChartTest/WebContent/js/fileUtil.js&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/js/fileUtil.js&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;lineScatter.html&quot; tooltip=&quot;eChartTest/WebContent/lineScatter.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/lineScatter.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.jsdt.ui.CompilationUnitEditor&quot; name=&quot;echarts.js&quot; tooltip=&quot;eChartTest/WebContent/js/echarts.js&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/js/echarts.js&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;eChart1.html&quot; tooltip=&quot;eChartTest/WebContent/eChart1.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/eChart1.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;javaScriptTest1.html&quot; tooltip=&quot;eChartTest/WebContent/javaScriptTest1.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/javaScriptTest1.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;jQueryTest.html&quot; tooltip=&quot;JavaScriptTest/jQueryTest.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/JavaScriptTest/jQueryTest.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;GaugeChart1.html&quot; tooltip=&quot;eChartTest/WebContent/GaugeChart1.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/eChartTest/WebContent/GaugeChart1.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.ui.browser.editorSupport&quot; name=&quot;htmlContainer.html&quot; tooltip=&quot;JavaScriptTest/htmlContainer.html&quot;>&#xD;&#xA;&lt;persistable path=&quot;/JavaScriptTest/htmlContainer.html&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_oO0Y0WndEeWDrJt3i5IrTw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_oO0Y0mndEeWDrJt3i5IrTw" label="%trimmedwindow.label.eclipseSDK" x="2191" y="-25" width="974" height="912">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_oO0Y0WndEeWDrJt3i5IrTw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_oO0Y0mndEeWDrJt3i5IrTw" label="%trimmedwindow.label.eclipseSDK" x="589" y="2" width="1337" height="1092">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="isRestored" value="true"/>
@@ -11,7 +11,6 @@
     <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workingSets/>"/>
     <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1442109732206"/>
     <tags>topLevel</tags>
-    <tags>shellMaximized</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_oO0Y0mndEeWDrJt3i5IrTw" selectedElement="_oO0Y02ndEeWDrJt3i5IrTw" horizontal="true">
       <children xsi:type="advanced:PerspectiveStack" xmi:id="_oO0Y02ndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_oO0ZJWndEeWDrJt3i5IrTw">
         <children xsi:type="advanced:Perspective" xmi:id="_oO0Y1GndEeWDrJt3i5IrTw" elementId="org.eclipse.jdt.ui.JavaPerspective" selectedElement="_oO0Y1WndEeWDrJt3i5IrTw" label="Java" iconURI="platform:/plugin/org.eclipse.jdt.ui/$nl$/icons/full/eview16/jperspective.png">
@@ -311,9 +310,9 @@
               <children xsi:type="advanced:Placeholder" xmi:id="_oO0ZKWndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.views.ResourceNavigator" toBeRendered="false" ref="_oO1m8GndEeWDrJt3i5IrTw"/>
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_oO0ZKmndEeWDrJt3i5IrTw" containerData="8751" selectedElement="_oO0ZK2ndEeWDrJt3i5IrTw" horizontal="true">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_oO0ZK2ndEeWDrJt3i5IrTw" containerData="8000" selectedElement="_oO0ZLGndEeWDrJt3i5IrTw">
-                <children xsi:type="advanced:Placeholder" xmi:id="_oO0ZLGndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.editorss" containerData="7626" ref="_oO1BBmndEeWDrJt3i5IrTw"/>
-                <children xsi:type="basic:PartStack" xmi:id="_oO0ZLWndEeWDrJt3i5IrTw" elementId="bottom" containerData="2374" selectedElement="_oO0ZMGndEeWDrJt3i5IrTw">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_oO0ZK2ndEeWDrJt3i5IrTw" containerData="8160" selectedElement="_oO0ZLGndEeWDrJt3i5IrTw">
+                <children xsi:type="advanced:Placeholder" xmi:id="_oO0ZLGndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.editorss" containerData="8725" ref="_oO1BBmndEeWDrJt3i5IrTw"/>
+                <children xsi:type="basic:PartStack" xmi:id="_oO0ZLWndEeWDrJt3i5IrTw" elementId="bottom" containerData="1275" selectedElement="_oO0ZMGndEeWDrJt3i5IrTw">
                   <children xsi:type="advanced:Placeholder" xmi:id="_oO0ZLmndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.views.ProblemView" ref="_oO1nMGndEeWDrJt3i5IrTw"/>
                   <children xsi:type="advanced:Placeholder" xmi:id="_oO0ZL2ndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.server.ui.ServersView" ref="_oO1nv2ndEeWDrJt3i5IrTw"/>
                   <children xsi:type="advanced:Placeholder" xmi:id="_oO0ZMGndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.views.PropertySheet" ref="_oO1ns2ndEeWDrJt3i5IrTw"/>
@@ -324,7 +323,7 @@
                   <children xsi:type="advanced:Placeholder" xmi:id="_oO0ZNWndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.views.TaskList" toBeRendered="false" ref="_oO1nsmndEeWDrJt3i5IrTw"/>
                 </children>
               </children>
-              <children xsi:type="basic:PartStack" xmi:id="_oO0_4GndEeWDrJt3i5IrTw" elementId="topRight" containerData="2000" selectedElement="_oO0_4WndEeWDrJt3i5IrTw">
+              <children xsi:type="basic:PartStack" xmi:id="_oO0_4GndEeWDrJt3i5IrTw" elementId="topRight" containerData="1840" selectedElement="_oO0_4WndEeWDrJt3i5IrTw">
                 <children xsi:type="advanced:Placeholder" xmi:id="_oO0_4WndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.views.ContentOutline" ref="_oO1ngWndEeWDrJt3i5IrTw"/>
                 <children xsi:type="advanced:Placeholder" xmi:id="_oO0_4mndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.common.snippets.internal.ui.SnippetsView" ref="_oO1nwGndEeWDrJt3i5IrTw"/>
               </children>
@@ -360,109 +359,19 @@
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
         <tags>active</tags>
-        <children xsi:type="basic:Part" xmi:id="_oO1BKGndEeWDrJt3i5IrTw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="jQueryTest.html" iconURI="platform:/plugin/org.eclipse.wst.html.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;jQueryTest.html&quot; partName=&quot;jQueryTest.html&quot; title=&quot;jQueryTest.html&quot; tooltip=&quot;JavaScriptTest/jQueryTest.html&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/JavaScriptTest/jQueryTest.html&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_A4zMAHOyEeWRDJKXsR6tmg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="Overlay.html" iconURI="platform:/plugin/org.eclipse.wst.html.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;Overlay.html&quot; partName=&quot;Overlay.html&quot; title=&quot;Overlay.html&quot; tooltip=&quot;eChartTest/WebContent/Overlay.html&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/eChartTest/WebContent/Overlay.html&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;4611&quot; selectionTopPixel=&quot;2193&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.wst.html.core.htmlsource.source</tags>
           <tags>removeOnHide</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BKWndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.EditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BKmndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.RulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BK2ndEeWDrJt3i5IrTw" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BLGndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.EditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.EditorContext</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.source.EditorContext</tags>
-            <tags>popup:org.eclipse.wst.sse.ui.StructuredTextEditor.EditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BLWndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.RulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.RulerContext</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.source.RulerContext</tags>
-            <tags>popup:org.eclipse.wst.sse.ui.StructuredTextEditor.RulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BLmndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.EditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BL2ndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.RulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BMGndEeWDrJt3i5IrTw" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BMWndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.EditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.EditorContext</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.source.EditorContext</tags>
-            <tags>popup:org.eclipse.wst.sse.ui.StructuredTextEditor.EditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BMmndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.RulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.RulerContext</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.source.RulerContext</tags>
-            <tags>popup:org.eclipse.wst.sse.ui.StructuredTextEditor.RulerContext</tags>
-          </menus>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_oO1BSWndEeWDrJt3i5IrTw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="StepTimeStat.html" iconURI="platform:/plugin/org.eclipse.wst.html.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;StepTimeStat.html&quot; partName=&quot;StepTimeStat.html&quot; title=&quot;StepTimeStat.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeStat.html&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/eChartTest/WebContent/StepTimeStat.html&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;14&quot; selectionOffset=&quot;3720&quot; selectionTopPixel=&quot;1852&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.wst.html.core.htmlsource.source</tags>
-          <tags>removeOnHide</tags>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BSmndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.EditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.EditorContext</tags>
-            <tags>popup:#AbstractTextEditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BS2ndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.RulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.RulerContext</tags>
-            <tags>popup:#AbstractTextEditorRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BTGndEeWDrJt3i5IrTw" elementId="#OverviewRulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:#OverviewRulerContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BTWndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.EditorContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.EditorContext</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.source.EditorContext</tags>
-            <tags>popup:org.eclipse.wst.sse.ui.StructuredTextEditor.EditorContext</tags>
-          </menus>
-          <menus xsi:type="menu:PopupMenu" xmi:id="_oO1BTmndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.html.core.htmlsource.source.RulerContext">
-            <tags>menuContribution:popup</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.RulerContext</tags>
-            <tags>popup:org.eclipse.wst.html.core.htmlsource.source.source.RulerContext</tags>
-            <tags>popup:org.eclipse.wst.sse.ui.StructuredTextEditor.RulerContext</tags>
-          </menus>
         </children>
         <children xsi:type="basic:Part" xmi:id="_tvR7YG04EeWmVqzofDeMlg" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="StepTimeTrend.html" iconURI="platform:/plugin/org.eclipse.wst.html.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;StepTimeTrend.html&quot; partName=&quot;StepTimeTrend.html&quot; title=&quot;StepTimeTrend.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeTrend.html&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/eChartTest/WebContent/StepTimeTrend.html&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;3981&quot; selectionTopPixel=&quot;1998&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;StepTimeTrend.html&quot; partName=&quot;StepTimeTrend.html&quot; title=&quot;StepTimeTrend.html&quot; tooltip=&quot;eChartTest/WebContent/StepTimeTrend.html&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/eChartTest/WebContent/StepTimeTrend.html&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;5900&quot; selectionTopPixel=&quot;3107&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.wst.html.core.htmlsource.source</tags>
           <tags>removeOnHide</tags>
           <tags>active</tags>
           <tags>activeOnClose</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_0CWa8HIlEeWQTaOU6aY1wA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ChartEvent.html" iconURI="platform:/plugin/org.eclipse.wst.html.ui/icons/full/obj16/sourceEditor.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.wst.html.core.htmlsource.source&quot; name=&quot;ChartEvent.html&quot; partName=&quot;ChartEvent.html&quot; title=&quot;ChartEvent.html&quot; tooltip=&quot;eChartTest/WebContent/ChartEvent.html&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/eChartTest/WebContent/ChartEvent.html&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2717&quot; selectionTopPixel=&quot;969&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>org.eclipse.wst.html.core.htmlsource.source</tags>
-          <tags>removeOnHide</tags>
         </children>
       </children>
     </sharedElements>
@@ -795,7 +704,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_oO1nxGndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_ucbtgHLkEeWU1KCt-By8mw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_oO4DM2ndEeWDrJt3i5IrTw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Bcn3IHrLEeW8U5s66UWjNg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_oO4DM2ndEeWDrJt3i5IrTw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_oO1n0mndEeWDrJt3i5IrTw" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -828,7 +737,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_oO1oIGndEeWDrJt3i5IrTw" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_ucgmAHLkEeWU1KCt-By8mw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_oO3fLmndEeWDrJt3i5IrTw"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_Bcn3KnrLEeW8U5s66UWjNg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_oO3fLmndEeWDrJt3i5IrTw"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_oO1oK2ndEeWDrJt3i5IrTw" elementId="org.eclipse.wst.jsdt.ui.CompilationUnitEditor">
         <tags>Draggable</tags>

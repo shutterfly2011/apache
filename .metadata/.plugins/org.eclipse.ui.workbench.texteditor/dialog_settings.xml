@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="require.config" key="selection"/>
+		<item value="refreshChart" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="require.config"/>
-			<item value="file content"/>
-			<item value="formatter"/>
-			<item value="actual"/>
-			<item value="innerhtml"/>
-			<item value="js"/>
-			<item value="datazoom"/>
-			<item value="var option"/>
+			<item value="refreshChart"/>
+			<item value="TYPE"/>
+			<item value="inject"/>
+			<item value="injectGrapsHtml"/>
+			<item value="injectGraphsHtml"/>
+			<item value=".csv"/>
+			<item value="trendChart"/>
+			<item value="trendchart"/>
 		</list>
 		<list key="replacehistory">
 		</list>

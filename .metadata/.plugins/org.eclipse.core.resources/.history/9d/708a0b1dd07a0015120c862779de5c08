@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Step Time Trend Analysis</title>
+<script src="js/echarts.js"></script>
+<script type="text/javascript">
+	var cht;
+	var dataSet;
+	var ecConfig;
+	require.config({
+        paths: {
+            echarts: 'js'
+        }
+    });
+	
+
+	function eConsole(param) {
+	    var mes = '【' + param.type + '】';
+	    if (typeof param.seriesIndex != 'undefined') {
+	        mes += '  seriesIndex : ' + param.seriesIndex;
+	        mes += '  dataIndex : ' + param.dataIndex;
+	    }
+	    if (param.type == 'hover') {
+	        document.getElementById('eventConsole').innerHTML = 'Event Console : ' + mes;
+	    }
+	    else {
+	        document.getElementById('eventConsole').innerHTML = mes;
+	    }
+	    console.log(param);
+	};
+
+	
+	var option = {
+		    title : {
+		        text: 'Step time trend: ProcessWait'
+		        //subtext: 'TX_KR22'
+		    },
+		    tooltip : {
+		        trigger: 'axis',
+		        showDelay : 0,
+		        formatter : function (params) {
+		        	var dt = new Date(params.value[0]);
+		        	return 'Date: ' + dt.getMonth() + '/' + dt.getDate() + ' ' + dt.getHours() + ':' 
+                   	+ dt.getMinutes() + ' <br/>'
+                   	+ params.value[1] + ' min';	
+		        	
+		        }
+		    },
+		    legend: {
+		        data:['Step time','Target']
+		    },
+		    dataZoom : {
+		        show : true,
+		        realtime: true,
+		        start : 0,
+		        end : 100
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataZoom : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    xAxis : [
+		        {
+		            type : 'value',
+		            scale:true,
+		            axisLabel : {
+		                formatter: function(value){
+		                	var dt = new Date(value);
+                			return dt.getMonth() + '/' + dt.getDate();
+		            	}
+		            }
+		        }
+		    ],
+		    yAxis : [
+		        {
+		            type : 'value',
+		            scale:true,
+		            axisLabel : {
+		                formatter: '{value} min'
+		            }
+		        }
+		    ],
+		    series : [
+		        {
+		            name:'Step time history',
+		            type:'scatter',
+		            data: [],
+		            markPoint : {
+		                data : [
+		                    {type : 'max', name: 'Max time'},
+		                    {type : 'min', name: 'Min time'}
+		                ]
+		            },
+		            markLine : {
+		                data : [
+		                    {type : 'average', name: 'Average'}
+		                ]
+		            }
+		        },
+		        {
+		            name:'Target history',
+		            type:'scatter',
+		            data: [],
+		        /*
+		            markPoint : {
+		                data : [
+		                    {type : 'max', name: 'min'},
+		                    {type : 'min', name: 'max'}
+		                ]
+		            },*/
+		            markLine : {
+		                data : [
+		                    {type : 'average', name: 'avg'}
+		                ]
+		            }
+		            
+		        }
+		    ]
+		};  
+</script>
+
+<script type="text/javascript"> 
+
+</script> 
+</head>
+<body>
+	<h2 id="chartTitle">Step time analysis</h2>
+	<div id="chartSeries">New Charts Area</div>
+	<p>
+		<a id="sourceFile" href="../Tx_KR22_24240.csv">Download source data here</a>
+	</p>
+	<p>
+		<a id="fileContent">File content (to be loaded)</a>
+	</p>
+	<p>
+		<a id="eventConsole">Events handling</a>
+	</p>
+	<script type="text/javascript">
+		function injectGraphsHtml(nCount){
+			var strTemp = '';
+			for (var i =0; i<nCount; i++){
+				strTemp += '<div id="trendChart' + i + '" style="height:600px"></div>'
+			}
+			document.getElementById("chartSeries").innerHTML = strTemp;
+		};
+		function cloneObject(obj){
+		    if (obj === null || typeof obj !== 'object') {
+		        return obj;
+		    }
+		    var temp = obj.constructor(); // give temp the original obj's constructor
+		    for (var key in obj) {
+		        temp[key] = cloneObject(obj[key]);
+		    }
+		    return temp;
+		};
+
+		//this part of the code handles graphics output
+		function loadGraph()
+		{
+			// configure for module loader
+			var dsStepNames = [];
+			var dsStepTime = [];
+			var dsTarget = [];
+			var nIndex;
+			var i;
+			for (var i=1; i<dataSet.length; i++){
+				if (dsStepNames.indexOf(dataSet[i][6]) == -1) {
+					dsStepNames.push(dataSet[i][6]);
+					dsStepTime.push([]);
+					dsTarget.push([]);
+				}
+				nIndex = dsStepNames.indexOf(dataSet[i][6]);
+				dsStepTime[nIndex].push([
+				                 Date.parse(dataSet[i][11]),
+				                 parseInt(dataSet[i][7])
+				                 ]
+						);
+				dsTarget[nIndex].push([
+								Date.parse(dataSet[i][11]),
+								parseInt(dataSet[i][8])
+				               ]
+						);
+				
+			}
+			document.getElementById('chartTitle').innerHTML = 'Product: ' + dataSet[1][4] + ' step time trend';
+			injectGraphsHtml(dsStepNames.length);
+			for (i=0;i<dsStepNames.length; i++){
+				var opt = cloneObject(option);
+				opt.series[0].data = dsStepTime[i];
+				opt.series[1].data = dsTarget[i];
+				opt.title.text = 'Step name: ' + dsStepNames[i];
+				require(
+			            [
+			                'echarts',
+			                'echarts/chart/scatter' 
+			            ],
+			            function (ec) {
+			            	cht = ec.init(document.getElementById('trendChart' + i));
+			            	cht.setOption(opt);
+							/*
+			            	cht.on(ecConfig.EVENT.CLICK, eConsole);
+			            	cht.on(ecConfig.EVENT.DBLCLICK, eConsole);
+			            	//cht.on(ecConfig.EVENT.HOVER, eConsole);
+			            	cht.on(ecConfig.EVENT.DATA_ZOOM, eConsole);
+			            	cht.on(ecConfig.EVENT.LEGEND_SELECTED, eConsole);
+			            	cht.on(ecConfig.EVENT.MAGIC_TYPE_CHANGED, eConsole);
+			            	cht.on(ecConfig.EVENT.DATA_VIEW_CHANGED, eConsole);
+							*/
+			            }
+				);
+			}
+			//option.title.subtext = 'Product:' + dataSet[1][4] + '  Step name: ' + dataSet[1][6];
+			//console.log(dataSet[1][4]);
+			//var tp = dataSet[1][4] + ' Step time vs Target trend';
+			
+			//var tp1 =  dataSet[1][6] + '';
+			//option.title.text = 'Step name: ' + tp1;
+			//option.title.subtext = 'Step name: ' + tp1;
+			//option.series[0].data = dsStepTime;
+			//option.series[1].data = dsTarget;
+			//cht.setOption(option);
+	    }		
+		
+	</script>
+	<script type="text/javascript">
+		//this section loads the csv file from the server
+		var file;
+		var allText;
+		file = document.getElementById("sourceFile").href;
+		var txtFile = new XMLHttpRequest();
+	    txtFile.open("GET", file, true);
+	    txtFile.onreadystatechange = function(){
+	    	dataSet= [];
+	        if(txtFile.readyState === 4)
+	        {
+	            if(txtFile.status === 200 || txtFile.status == 0)
+	            {
+	            	var content = txtFile.responseText;
+	    	    	var allLines = content.split(/\r\n|\n/);
+	    	    	while (allLines.length){
+	    	    		dataSet.push(allLines.shift().split(','));
+	    	    	}
+	    	    	document.getElementById("fileContent").innerHTML = 'Data loaded: ' + dataSet[0];
+	    	    	loadGraph();
+	    	  	}
+	            else if (tstFile.status === 404){
+	            	document.getElementById("fileContent").innerHTML = 'Error, the csv data file is not found!'
+	            }
+	        }
+	    }
+		txtFile.send();
+		
+	</script>
+</body>
+</html>
