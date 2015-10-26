@@ -36,7 +36,7 @@
     		        },
     		        formatter : function (params) {
     		            return 'BatchId: ' + params.seriesName + '<br/>'
-    		                   + params.value[1] + ' @ ' + parseInt(params.value[0]/60000) + ' min';
+    		                   + params.value[1] + ' @ ' + parseInt(params.value[0]/60) + ' min';
     		        }
     		    },
     		    dataZoom : {
@@ -65,7 +65,7 @@
     		            type: 'value',
     		            axisLabel : {
     		                formatter: function(param){
-    		                				return parseInt(param/60000) + ' min';
+    		                				return parseInt(param/60) + ' min';
     		                				}
     		            }
     		        }
@@ -127,35 +127,42 @@
 <body>
     <!-- Prepare a Dom with size (width and height) for ECharts -->
     <h1>Overlay Chart</h1>
-    <div id="overlayChart" style="height:600px"></div>
+    
     <p>
-    	
 		<a>Line up step: </a><input id="lineUpStep" type="text" name="lineUpStep" value="100"><button onclick='onUpdate()'>Refresh</button>
 	</p>
-	
+	<div id="chartSeries">New Charts Area</div>
     <p>
 		<a id="sourceFile" href="../overlaySource.csv">Download source data here</a>
 	</p>
 	<p>
 		<a id="fileContent">File content (to be loaded)</a>
 	</p>
-	
     <!-- ECharts import -->
     <!--<script src="http://echarts.baidu.com/build/dist/echarts.js"></script> -->
     <script src="js/echarts.js"></script>
     <script type="text/javascript">
-		require.config({
-			paths:{echarts:'js'}		
-		});
-		require (
-			['echarts', 'echarts/chart/line'],
-			function(ec){
-				chtOverlay = ec.init(document.getElementById('overlayChart'));
-				chtOverlay.setOption(option);
-			}
-		);
+    	function refreshChart(strChart, oOption){
+			require.config({
+				paths:{echarts:'js'}		
+			});
+			require (
+				['echarts', 'echarts/chart/line'],
+				function(ec){
+					chtOverlay = ec.init(document.getElementById(strChart));
+					chtOverlay.setOption(oOption);
+				}
+			);
+    	}
 	</script>
 	<script>
+		function injectGraphsHtml(nCount){
+			var strTemp = '';
+			for (var i =0; i<nCount; i++){
+				strTemp += '<div id="overlayChart' + i + '" style="height:600px"></div>'
+			}
+			document.getElementById("chartSeries").innerHTML = strTemp;
+		}
 		function Right(str, n){
 		    if (n <= 0)
 		       return "";
@@ -166,6 +173,17 @@
 		       return String(str).substring(iLen-n, iLen);
 		    }
 		};
+		function cloneObject(obj){
+		    if (obj === null || typeof obj !== 'object') {
+		        return obj;
+		    }
+		    var temp = obj.constructor(); // give temp the original obj's constructor
+		    for (var key in obj) {
+		        temp[key] = cloneObject(obj[key]);
+		    }
+		    return temp;
+		}
+		
 		function onUpdate(){
 			loadGraph(document.getElementById('lineUpStep').value );
 		};
@@ -185,7 +203,7 @@
 			var strLineUpStep = '_PEVENT'; //todo: change this to sstep in the production code
 			var nPrevStep;
 			//first identify all the tabs and series (batches), as well as batch start, end times, plus offset values
-			for (i=1; i<dataSet.length; i++){
+			for (i=1; i<dataSet.length && (typeof dataSet[i][4] !== "undefined"); i++){
 				if (dataSet[i][4] != '' && dsTabName.indexOf(dataSet[i][4]) == -1 ) { //check if the index of tabname, if it doesn't exist, add it
 					dsTabName.push(dataSet[i][4]);
 				}
@@ -197,7 +215,7 @@
 					)
 				{
 					dsSeriesName.push(dataSet[i][3]);
-					dsDeltaTime.push( Date.parse(dataSet[i][0]) );
+					dsDeltaTime.push( Date.parse(dataSet[i][0])/1000 );
 				}				
 			}
 			//now add the series and tab data into a big dataset			
@@ -220,37 +238,46 @@
 					var dt = new Date(dataSet[i][0]);
 					//here add the right axis data, note we need to generate the steps
 					if (dataSet[i][5] == 'yRight'){
-						if (nPrevStep != dataSet[i][1]){
-							dsRightAxis[nSeriesId].push([dt-nTimeDelta-1, nPrevStep]);
+						if (nPrevStep != parseInt(dataSet[i][1])){
+							dsRightAxis[nSeriesId].push([dt/1000-nTimeDelta-1, nPrevStep]);
 						}
-						dsRightAxis[nSeriesId].push([dt-nTimeDelta, dataSet[i][1]]);
-						nPrevStep = dataSet[i][1];
+						dsRightAxis[nSeriesId].push([dt/1000-nTimeDelta, dataSet[i][1]]);
+						nPrevStep = parseInt(dataSet[i][1]);
 					}
 					//add the time-value paire to their corresponding tab-series arrays
 					if (dataSet[i][5] == 'yLeft' && dataSet[i][4] != ''){
-						console.log(i);
 						nTabId = dsTabName.indexOf(dataSet[i][4]);
 						//nSeriesId = dsSeriesName.indexOf(dataSet[i][3]);
 						if (nTabId >=0 && nSeriesId >=0){
-							dsLeftAxis[nTabId][nSeriesId].push([ dt-nTimeDelta, dataSet[i][1] ]);
+							dsLeftAxis[nTabId][nSeriesId].push([ dt/1000-nTimeDelta, dataSet[i][1] ]);
 						}
 					}
 				}	
 			}
-			
-				
 			//now connect them with the chart options
-			for (i=0; i<1; i++){
+			injectGraphsHtml(dsTabName.length); //create place holder htmls for the graphics
+			//option.series = [];
+			//option.legend.data = [];
+			for (i=0; i<dsTabName.length; i++){
+				var opt = cloneObject(option);
+				opt.title.text = dsTabName[i];
 				for (j=0;j<dsSeriesName.length; j++){
-					option.series.push (oSeries(dsSeriesName[j],'solid', dsLeftAxis[i][j], aryColors[j], 0));
+					opt.series.push (oSeries(dsSeriesName[j],'solid', dsLeftAxis[i][j], aryColors[j], 0));
 				}
+				for (j=0; j<dsSeriesName.length; j++){
+					//add right axis
+					opt.series.push(oSeries( dsSeriesName[j], 'dashed', dsRightAxis[j],aryColors[j], 1));
+					opt.legend.data.push(dsSeriesName[j]);
+				}
+				refreshChart('overlayChart' + i, opt);
 			}
+			/*
 			for (i=0; i<dsSeriesName.length; i++){
 				//add right axis
-				option.series.push(oSeries( dsSeriesName[i], 'dashed', dsRightAxis[i],aryColors[i], 1));
-				option.legend.data.push(dsSeriesName[i]);
-			}
-	
+				opt.series.push(oSeries( dsSeriesName[i], 'dashed', dsRightAxis[i],aryColors[i], 1));
+				opt.legend.data.push(dsSeriesName[i]);
+			}*/
+			//refreshChart('overlayChart');
 		}
 	</script>
 	<script type="text/javascript">
