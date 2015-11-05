@@ -89,15 +89,20 @@
 		    ],
 		    series : [
 		        {
-		            name:'Step time history',
+		            name:'Step time',
 		            type:'scatter',
 		            data: [],
+					itemStyle:{
+						borderColor: 'Red',
+						borderWidth: 3
+					},
 		            markPoint : {
 		                data : [
 		                    {type : 'max', name: 'Max time'},
 		                    {type : 'min', name: 'Min time'}
 		                ]
 		            },
+					
 		            markLine : {
 		                data : [
 		                    {type : 'average', name: 'Average'}
@@ -105,7 +110,7 @@
 		            }
 		        },
 		        {
-		            name:'Target history',
+		            name:'Target',
 		            type:'scatter',
 		            data: [],
 		        /*
@@ -147,7 +152,7 @@
 			require(
 		            [
 		                'echarts',
-		                'echarts/chart/scatter' 
+		                'echarts/chart/scatter', 'echarts/chart/line' 
 		            ],
 		            function (ec) {
 		            	cht = ec.init(document.getElementById(chartName));
