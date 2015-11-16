@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="PEVENT" key="selection"/>
+		<item value="refreshChart" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="refreshChart"/>
+			<item value="injectGraphsHtml"/>
+			<item value="inject"/>
+			<item value="i"/>
 			<item value="pevent"/>
 			<item value="strLineUpStep"/>
 		</list>

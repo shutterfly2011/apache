@@ -14,6 +14,8 @@
     		retVal.yAxisIndex = yAxisId;		
     		retVal.itemStyle = new Object();
     		retVal.itemStyle.normal = new Object();
+    		retVal.itemStyle.normal.color = strColor;
+    		retVal.itemStyle.normal.borderColor=strColor;
     		retVal.itemStyle.normal.lineStyle = new Object();
     		retVal.itemStyle.normal.lineStyle.type = strLineType;
     		retVal.itemStyle.normal.lineStyle.color = strColor;
@@ -156,6 +158,21 @@
     	}
 	</script>
 	<script>
+		function connectCharts(nCount){
+			var cht = [];
+			for (var i=0; i<nCount; i++){
+				cht.append(ec.init(document.getElementById('overlayChart' + i)));
+			}
+			for (i=0;i<nCount;i++){
+				var temp = [];
+				for (var j=0; j<nCount;j++){
+					if (i!=j){
+						temp.append(cht[j]);
+					}
+				}
+				cht[i].connect(temp);
+			}
+		}
 		function injectGraphsHtml(nCount){
 			var strTemp = '';
 			for (var i =0; i<nCount; i++){
@@ -271,6 +288,7 @@
 				}
 				refreshChart('overlayChart' + i, opt);
 			}
+			connectCharts(dsTabName.length);
 			/*
 			for (i=0; i<dsSeriesName.length; i++){
 				//add right axis
